@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  text-align: center;
+}
+
+.box {
+  max-width: 400px;
+
+  width: 80vw;
+  min-height: 90vh;
+
+  background-color: rgb(255, 255, 255);
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+button {
+  background-color: purple;
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}

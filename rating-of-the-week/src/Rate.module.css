@@ -1,0 +1,22 @@
+.Box {
+  margin: 5rem;
+}
+
+.rateBox {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.rate {
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 0.5rem;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.yellow {
+  background-color: yellow;
+}
