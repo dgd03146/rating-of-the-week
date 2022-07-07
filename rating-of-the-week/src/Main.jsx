@@ -13,8 +13,8 @@ const Main = ({ days, onReset }) => {
       sumRate += i.rate;
     }
 
-    const averageRate = Math.floor(sumRate / 7);
-    return averageRate;
+    const averageRate = sumRate / 7;
+    return averageRate.toFixed(1);
   };
 
   const averageRate = useMemo(getAverageRate, [days]);
@@ -31,7 +31,6 @@ const Main = ({ days, onReset }) => {
     <div className={styles.main}>
       <h1>내 일주일은?</h1>
       <ul>
-        cd
         {days.map((it) => (
           <li className={styles.dayBox} key={it.id}>
             <h2>{it.day}</h2>

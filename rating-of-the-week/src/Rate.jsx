@@ -9,18 +9,21 @@ const Rate = ({ days, onStarRate }) => {
   let navigate = useNavigate();
   const params = useParams();
 
-  const starRate = useCallback((it) => {
-    setClicked(it);
-    const updatedDays = days.map((ele) => {
-      if (ele.day === params.day) {
-        return { ...ele, rate: it };
-      } else {
-        return { ...ele };
-      }
-    });
+  const starRate = useCallback(
+    (it) => {
+      setClicked(it);
+      const updatedDays = days.map((ele) => {
+        if (ele.day === params.day) {
+          return { ...ele, rate: it };
+        } else {
+          return { ...ele };
+        }
+      });
 
-    onStarRate(updatedDays);
-  });
+      onStarRate(updatedDays);
+    },
+    [days, onStarRate, params.day]
+  );
 
   const handleUserKeyPress = useCallback(
     (event) => {
