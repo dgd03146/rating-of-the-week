@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Rate.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 
 const Rate = ({ days, onStarRate }) => {
   const [hovered, setHovered] = useState(null);
@@ -9,7 +9,7 @@ const Rate = ({ days, onStarRate }) => {
   let navigate = useNavigate();
   const params = useParams();
 
-  const starRate = (it) => {
+  const starRate = useCallback((it) => {
     setClicked(it);
     const updatedDays = days.map((ele) => {
       if (ele.day === params.day) {
@@ -20,7 +20,23 @@ const Rate = ({ days, onStarRate }) => {
     });
 
     onStarRate(updatedDays);
-  };
+  });
+
+  const handleUserKeyPress = useCallback(
+    (event) => {
+      const { key } = event;
+
+      starRate(parseInt(key));
+    },
+    [starRate]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleUserKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   return (
     <div>
